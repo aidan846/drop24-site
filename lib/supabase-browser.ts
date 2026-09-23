@@ -1,0 +1,8 @@
+"use client";
+type DemoError={message:string}|null;type DemoUser={id:string;email:string;created_at:string;app_metadata:Record<string,never>;user_metadata:Record<string,never>;aud:string};type DemoSession={access_token:string;refresh_token:string;expires_in:number;token_type:string;user:DemoUser};
+const user:DemoUser={id:"demo-user",email:"aidan@example.com",created_at:new Date().toISOString(),app_metadata:{},user_metadata:{},aud:"authenticated"};
+const session:DemoSession={access_token:"local-demo",refresh_token:"local-demo",expires_in:3600,token_type:"bearer",user};
+export const supabaseUrl="",supabaseAnonKey="local-demo",supabaseStorageBucket="local-demo",isSupabaseAuthConfigured=true;
+export const supabase={auth:{getSession:async():Promise<{data:{session:DemoSession};error:DemoError}>=>({data:{session},error:null}),onAuthStateChange:(callback:(event:string,value:DemoSession)=>void)=>{queueMicrotask(()=>callback("SIGNED_IN",session));return{data:{subscription:{unsubscribe(){}}}}},signOut:async(_options?:unknown):Promise<{error:DemoError}>=>({error:null}),signInWithOtp:async(_options?:unknown):Promise<{error:DemoError}>=>({error:null}),verifyOtp:async(_options?:unknown):Promise<{data:{user:DemoUser;session:DemoSession};error:DemoError}>=>({data:{user,session},error:null})},storage:{from:(_bucket:string)=>({uploadToSignedUrl:async(_path:string,_token:string,_file:File):Promise<{data:Record<string,never>;error:DemoError}>=>{await new Promise(r=>setTimeout(r,900));return{data:{},error:null}}})}};
+export async function authHeaders(){return {"X-Drop24-Demo":"1"}}
+export async function verifyEmailOtp(_email?:string,_token?:string){return {data:{user,session},error:null as DemoError}}

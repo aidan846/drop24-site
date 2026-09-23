@@ -1,0 +1,6 @@
+"use client";
+import Link from "next/link";
+import { PLANS } from "@/lib/plans";
+import SiteFooter from "./site-footer";
+import SiteNav from "./site-nav";
+export default function PricingPage(){return <div className="flex min-h-screen flex-col"><SiteNav/><main className="flex-1 px-6 py-20"><div className="mx-auto max-w-7xl"><h1 className="text-6xl font-bold uppercase tracking-tighter">Simple pricing.</h1><p className="mt-5 max-w-xl text-muted-foreground">The plans below are preserved for the portfolio demo. Billing has been retired and no purchase can be made.</p><div className="mt-12 grid gap-5 md:grid-cols-3">{(["free","plus","pro"] as const).map(k=>{const p=PLANS[k];return <article key={k} className={`border bg-card p-7 ${k==="plus"?"border-primary-bright shadow-[7px_7px_0_0_#ea580c]":"border-border"}`}><p className="font-mono-tight text-xs uppercase text-primary">{p.eyebrow}</p><h2 className="mt-3 text-3xl font-bold">{p.name}</h2><p className="mt-2 text-2xl font-bold">{p.price}</p><p className="mt-4 text-sm text-muted-foreground">{p.tagline}</p><ul className="mt-6 space-y-3 text-sm">{p.features.map(f=><li key={f}>✓ {f}</li>)}</ul><Link href="/dashboard" className="industrial-button industrial-button-dark mt-8 w-full">View in demo</Link></article>})}</div></div></main><SiteFooter/></div>}

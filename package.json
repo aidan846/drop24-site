@@ -1,0 +1,6 @@
+{
+  "name": "drop24-portfolio-demo", "private": true, "version": "1.0.0", "type": "module",
+  "scripts": { "dev": "next dev", "build": "next build", "start": "next dev" },
+  "devDependencies": { "@tailwindcss/postcss": "^4.3.2", "@types/node": "^24.0.0", "@types/qrcode": "^1.5.6", "@types/react": "^19.2.17", "@types/react-dom": "^19.2.3", "postcss": "8.5.23", "tailwindcss": "^4.3.2", "typescript": "~6.0.2" },
+  "dependencies": { "motion": "^12.42.2", "next": "16.2.12", "qrcode": "^1.5.4", "react": "19.2.8", "react-dom": "19.2.8" }
+}
